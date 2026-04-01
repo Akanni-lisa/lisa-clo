@@ -10,23 +10,22 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 import "./Home.css";
-import slideOne from "../../example images/pexels-cesar-o-neill-26650613-29427399.jpg.jpeg";
-import slideTwo from "../../example images/pexels-ryanjvr-2314992.jpg.jpeg";
-import slideThree from "../../example images/pexels-shkrabaanthony-7081111.jpg.jpeg";
+import slideOne from "../assets/homescreen/img1.png";
+import slideTwo from "../assets/homescreen/img2.jpg";
+import slideThree from "../assets/homescreen/img4.png";
 
 export default function Home() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [query, setQuery] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [slideOne, slideTwo, slideThree];
 
   const suggestions = [
-    { name: "Everyday Joggers", price: "Rs. 1,199.00" },
-    { name: "Oversized T-Shirt", price: "Rs. 999.00" },
-    { name: "Performance Hoodie", price: "Rs. 1,499.00" },
+    { name: "Everyday Joggers", price: "₹. 1,199.00" },
+    { name: "Oversized T-Shirt", price: "₹. 999.00" },
+    { name: "Performance Hoodie", price: "₹. 1,499.00" },
   ];
 
   const nextSlide = () => {
@@ -75,9 +74,9 @@ export default function Home() {
               <FaSearch />
             </button>
           </div>
-          <button className="icon-btn" type="button" aria-label="Wishlist">
+          <Link to="/Wishlist" className="icon-btn" aria-label="Go to wishlist">
             <FaRegHeart />
-          </button>
+          </Link>
           <Link to="/Cart" className="icon-btn" aria-label="Go to cart">
             <FaShoppingCart />
           </Link>

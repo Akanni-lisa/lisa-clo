@@ -7,23 +7,34 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import outfit1 from "../assets/cart/img1.jpg";
+import outfit2 from "../assets/cart/img2.jpg";
+import outfit3 from "../assets/cart/img3.jpg";
+
 export default function CartPage() {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
 
   const cartItems = [
     {
       id: 1,
-      name: "Beige Oversized Hoodie",
-      price: 59,
+      name: "Formal Shirt",
+      price: 999,
       quantity: 1,
-      image: "https://via.placeholder.com/100",
+      image: outfit1,
     },
     {
       id: 2,
-      name: "Ribbed Midi Dress",
-      price: 75,
+      name: "Straight Fit Jeans",
+      price: 1599,
       quantity: 1,
-      image: "https://via.placeholder.com/100",
+      image: outfit2,
+    },
+    {
+      id: 3,
+      name: "Floral Dress",
+      price: 1499,
+      quantity: 1,
+      image: outfit3,
     },
   ];
 
@@ -47,7 +58,7 @@ export default function CartPage() {
             <FaHome />
           </Link>
 
-          {/* 🔥 ACCOUNT DROPDOWN */}
+
           <div className="account-menu">
             <button
               className="icon-btn"
@@ -76,7 +87,7 @@ export default function CartPage() {
 
               <div className="details">
                 <h3>{item.name}</h3>
-                <p>${item.price}</p>
+                <p>₹{item.price}</p>
 
                 <div className="quantity">
                   <button>-</button>
@@ -93,7 +104,7 @@ export default function CartPage() {
         {/* Summary */}
         <div className="cart-summary">
           <h2>Summary</h2>
-          <p>Subtotal: ${subtotal}</p>
+          <p>Subtotal: ₹{subtotal}</p>
           <button className="checkout-btn">Checkout</button>
         </div>
       </div>
