@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {
   FaChevronLeft,
   FaChevronRight,
+  FaHeart,
   FaRegHeart,
   FaSearch,
   FaShoppingCart,
@@ -13,14 +14,57 @@ import "./Home.css";
 import slideOne from "../assets/homescreen/img1.png";
 import slideTwo from "../assets/homescreen/img2.jpg";
 import slideThree from "../assets/homescreen/img4.png";
+import menImageOne from "../assets/Men's Collection/3e3b1e0731bd0214689d5761effc2e5f.jpg";
+import menImageTwo from "../assets/Men's Collection/58cb38ae13a312ac83b8810624550a38.jpg";
+import menImageThree from "../assets/Men's Collection/bc8f2c1f855a92997f7e3f275afaa733.jpg";
+import womenImageOne from "../assets/Women's Collection/1eeaea48003b982da692a74822aeef07.jpg";
+import womenImageTwo from "../assets/Women's Collection/21ab5b5a0ba35f90c51a4119f61a6fa1.jpg";
+import womenImageThree from "../assets/Women's Collection/4325e96e149af54b55c025a0b309b688.jpg";
+import genzImageOne from "../assets/Gen Z Collection's/35987c374bb954361b11c09199e3f3de.jpg";
+import genzImageTwo from "../assets/Gen Z Collection's/73f4f1551f666363dae473329961b0f9.jpg";
 
 export default function Home() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [wishlistedCards, setWishlistedCards] = useState({});
+  // const [burstCards, setBurstCards] = useState({});
 
   const slides = [slideOne, slideTwo, slideThree];
+  const menRepeatedImages = [
+    menImageOne,
+    menImageTwo,
+    menImageThree,
+    menImageOne,
+    menImageTwo,
+    menImageThree,
+    menImageOne,
+    menImageTwo,
+    menImageThree,
+  ];
+  const womenRepeatedImages = [
+    womenImageOne,
+    womenImageTwo,
+    womenImageThree,
+    womenImageOne,
+    womenImageTwo,
+    womenImageThree,
+    womenImageOne,
+    womenImageTwo,
+    womenImageThree,
+  ];
+  const genzRepeatedImages = [
+    genzImageOne,
+    genzImageTwo,
+    genzImageOne,
+    genzImageTwo,
+    genzImageOne,
+    genzImageTwo,
+    genzImageOne,
+    genzImageTwo,
+    genzImageOne,
+  ];
 
   const suggestions = [
     { name: "Everyday Joggers", price: "₹. 1,199.00" },
@@ -34,6 +78,31 @@ export default function Home() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const scrollCollection = (rowId, direction) => {
+    const row = document.getElementById(rowId);
+    if (!row) return;
+
+    row.scrollBy({
+      left: direction === "left" ? -280 : 280,
+      behavior: "smooth",
+    });
+  };
+
+  const toggleWishlist = (cardId) => {
+    const isCurrentlyWishlisted = !!wishlistedCards[cardId];
+
+    if (isCurrentlyWishlisted) {
+      setWishlistedCards((prev) => {
+        const updated = { ...prev };
+        delete updated[cardId];
+        return updated;
+      });
+      return;
+    }
+
+    setWishlistedCards((prev) => ({ ...prev, [cardId]: true }));
   };
 
   useEffect(() => {
@@ -132,6 +201,123 @@ export default function Home() {
           >
             <FaChevronRight />
           </button>
+        </section>
+
+        <section className="collection-section">
+          <h2 className="collection-title">Men&apos;s Collection</h2>
+          <div className="collection-shell">
+            <button
+              className="collection-arrow left"
+              type="button"
+              aria-label="Previous items in men's collection"
+              onClick={() => scrollCollection("men-collection", "left")}
+            >
+              <FaChevronLeft />
+            </button>
+            <div id="men-collection" className="collection-row">
+              {menRepeatedImages.map((image, index) => (
+                <article className="collection-card" key={`men-${index}`}>
+                  <button
+                    type="button"
+                    className={`wishlist-btn ${
+                      wishlistedCards[`men-${index}`] ? "active" : ""
+                    }`}
+                    aria-label="Toggle wishlist"
+                    onClick={() => toggleWishlist(`men-${index}`)}
+                  >
+                    {wishlistedCards[`men-${index}`] ? <FaHeart /> : <FaRegHeart />}
+                  </button>
+                  <img src={image} alt={`Men collection ${index + 1}`} />
+                </article>
+              ))}
+            </div>
+            <button
+              className="collection-arrow right"
+              type="button"
+              aria-label="Next items in men's collection"
+              onClick={() => scrollCollection("men-collection", "right")}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        </section>
+
+        <section className="collection-section">
+          <h2 className="collection-title">Women&apos;s Collection</h2>
+          <div className="collection-shell">
+            <button
+              className="collection-arrow left"
+              type="button"
+              aria-label="Previous items in women's collection"
+              onClick={() => scrollCollection("women-collection", "left")}
+            >
+              <FaChevronLeft />
+            </button>
+            <div id="women-collection" className="collection-row">
+              {womenRepeatedImages.map((image, index) => (
+                <article className="collection-card" key={`women-${index}`}>
+                  <button
+                    type="button"
+                    className={`wishlist-btn ${
+                      wishlistedCards[`women-${index}`] ? "active" : ""
+                    }`}
+                    aria-label="Toggle wishlist"
+                    onClick={() => toggleWishlist(`women-${index}`)}
+                  >
+                    {wishlistedCards[`women-${index}`] ? <FaHeart /> : <FaRegHeart />}
+                  </button>
+                  <img src={image} alt={`Women collection ${index + 1}`} />
+                </article>
+              ))}
+            </div>
+            <button
+              className="collection-arrow right"
+              type="button"
+              aria-label="Next items in women's collection"
+              onClick={() => scrollCollection("women-collection", "right")}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        </section>
+
+        <section className="collection-section">
+          <h2 className="collection-title">Gen Z Collection</h2>
+          <div className="collection-shell">
+            <button
+              className="collection-arrow left"
+              type="button"
+              aria-label="Previous items in Gen Z collection"
+              onClick={() => scrollCollection("genz-collection", "left")}
+            >
+              <FaChevronLeft />
+            </button>
+            <div id="genz-collection" className="collection-row">
+              {genzRepeatedImages.map((image, index) => (
+                <article className="collection-card" key={`genz-${index}`}>
+                  <button
+                    type="button"
+                    className={`wishlist-btn ${
+                      wishlistedCards[`genz-${index}`] ? "active" : ""
+                    }`}
+                    aria-label="Toggle wishlist"
+                    onClick={() => toggleWishlist(`genz-${index}`)}
+                  >
+                    {wishlistedCards[`genz-${index}`] ? <FaHeart /> : <FaRegHeart />}
+                  </button>
+                  <img src={image} alt={`Gen Z collection ${index + 1}`} />
+                </article>
+              ))}
+            </div>
+            <button
+              className="collection-arrow right"
+              type="button"
+              aria-label="Next items in Gen Z collection"
+              onClick={() => scrollCollection("genz-collection", "right")}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
         </section>
       </main>
 

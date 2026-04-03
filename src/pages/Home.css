@@ -217,9 +217,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-
-  object-fit: cover;   
-  object-position: center;
+  object-fit: contain;
+  object-position: center center;
 
   opacity: 0;
   transform: scale(1.00);
@@ -259,6 +258,163 @@
 
 .carousel-btn.next {
   right: 14px;
+}
+
+.collection-section {
+  width: min(1200px, 100%);
+  margin: 28px auto 0;
+}
+
+.collection-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.collection-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.collection-row {
+  width: 100%;
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 4px 8px;
+  scrollbar-width: none;
+}
+
+.collection-row::-webkit-scrollbar {
+  display: none;
+}
+
+.collection-card {
+  position: relative;
+  flex: 0 0 clamp(170px, 20vw, 220px);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.26s ease, box-shadow 0.26s ease;
+}
+
+.collection-card img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 28vw, 290px);
+  object-fit: cover;
+}
+
+.collection-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.13);
+}
+
+.wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 8;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2f2f2f;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.wishlist-btn.active {
+  color: #e7344c;
+}
+
+.wishlist-btn.active svg {
+  filter: drop-shadow(0 2px 4px rgba(231, 52, 76, 0.3));
+}
+
+/* Burst animation disabled for now.
+.wishlist-btn.burst {
+  animation: wishlistPop 0.42s ease-out;
+}
+
+.wishlist-btn.burst::before,
+.wishlist-btn.burst::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.wishlist-btn.burst::before {
+  background: radial-gradient(circle, rgba(231, 52, 76, 0.18) 0%, rgba(231, 52, 76, 0) 65%);
+  animation: wishlistRing 0.52s ease-out;
+}
+
+.wishlist-btn.burst::after {
+  background:
+    radial-gradient(circle at 20% 30%, #ff663d 2px, transparent 3px),
+    radial-gradient(circle at 80% 26%, #ffa500 2px, transparent 3px),
+    radial-gradient(circle at 28% 78%, #ff3b6a 2px, transparent 3px),
+    radial-gradient(circle at 72% 74%, #ff8e3c 2px, transparent 3px),
+    radial-gradient(circle at 52% 12%, #e7344c 2px, transparent 3px),
+    radial-gradient(circle at 12% 58%, #ff5f45 2px, transparent 3px),
+    radial-gradient(circle at 88% 58%, #ff6f59 2px, transparent 3px);
+  animation: wishlistBurst 0.52s ease-out;
+}
+
+@keyframes wishlistPop {
+  0% { transform: scale(0.7); }
+  55% { transform: scale(1.16); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wishlistRing {
+  0% { transform: scale(0.55); opacity: 0.7; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes wishlistBurst {
+  0% { transform: scale(0.68); opacity: 0.85; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+*/
+
+.collection-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #60331b;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.collection-arrow.left {
+  left: -10px;
+}
+
+.collection-arrow.right {
+  right: -10px;
 }
 
 .footer {
@@ -449,6 +605,27 @@
 
   .search-grid {
     grid-template-columns: 1fr;
+  }
+
+  .collection-title {
+    font-size: 24px;
+  }
+
+  .collection-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .collection-arrow.left {
+    left: -4px;
+  }
+
+  .collection-arrow.right {
+    right: -4px;
+  }
+
+  .collection-card {
+    flex-basis: clamp(150px, 46vw, 190px);
   }
 
   .footer {
