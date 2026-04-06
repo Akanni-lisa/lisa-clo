@@ -42,9 +42,10 @@
 }
 
 .logo {
-  font-family: "Great Vibes", cursive;
-  font-size: 34px;
-  letter-spacing: 0.08em;
+  height: 70px;   
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
 }
 
 .header-actions {

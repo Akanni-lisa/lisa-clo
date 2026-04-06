@@ -10,9 +10,11 @@ import {
   FaUserCircle,
 } from "react-icons/fa";
 import "./Home.css";
-import slideOne from "../assets/homescreen/img1.png";
-import slideTwo from "../assets/homescreen/img2.jpg";
-import slideThree from "../assets/homescreen/img4.png";
+
+import logo from "../assets/logo.png";
+import slideOne from "../assets/homescreen/img1.jpg";
+import slideTwo from "../assets/homescreen/img2.png";
+import slideThree from "../assets/homescreen/img3.png";
 import menImageOne from "../assets/Men's Collection/3e3b1e0731bd0214689d5761effc2e5f.jpg";
 import menImageTwo from "../assets/Men's Collection/58cb38ae13a312ac83b8810624550a38.jpg";
 import menImageThree from "../assets/Men's Collection/bc8f2c1f855a92997f7e3f275afaa733.jpg";
@@ -118,7 +120,9 @@ export default function Home() {
     <div className="page">
       <header className="header">
         <div className="header-content">
-          <h1 className="logo">Lisa</h1>
+          <Link to="/">
+            <img src={logo} alt="Lisa Logo" className="logo" />
+          </Link>
         </div>
 
         <nav className="center-nav" aria-label="Categories">

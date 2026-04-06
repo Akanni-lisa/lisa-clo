@@ -3,7 +3,8 @@ import "./cart.css";
 import {
   FaTrash,
   FaUserCircle,
-  FaHome
+  FaHome,
+  FaRegHeart
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -17,7 +18,7 @@ export default function CartPage() {
   const cartItems = [
     {
       id: 1,
-      name: "Formal Shirt",
+      name: "off-Shoulder Top",
       price: 999,
       quantity: 1,
       image: outfit1,
@@ -54,11 +55,14 @@ export default function CartPage() {
         <h2 className="cart-title">Your Cart</h2>
 
         <div className="cart-header-icons">
+          <Link to="/Wishlist" className="icon-btn" aria-label="Go to wishlist">
+            <FaRegHeart />
+          </Link>
+          
           <Link to="/" className="icon-btn">
             <FaHome />
           </Link>
-
-
+          
           <div className="account-menu">
             <button
               className="icon-btn"
@@ -103,10 +107,55 @@ export default function CartPage() {
 
         {/* Summary */}
         <div className="cart-summary">
-          <h2>Summary</h2>
-          <p>Subtotal: ₹{subtotal}</p>
-          <button className="checkout-btn">Checkout</button>
+          <h2>Order Summary</h2>
+
+          {/* Savings Banner */}
+          <p className="saved-banner">₹800.00 saved so far</p>
+
+        <div className="summary-row">
+          <span>MRP total</span>
+          <span>₹{subtotal + 800}</span>
         </div>
+
+        <div className="summary-row">
+          <span>Discount on MRP</span>
+          <span className="green">₹800.00</span>
+        </div>
+
+        <div className="summary-row">
+          <span>Cart Subtotal</span>
+          <span>₹{subtotal}</span>
+        </div>
+
+        <div className="summary-row">
+          <span>Total discount</span>
+          <span className="green">₹0.00</span>
+        </div>
+
+        <div className="summary-row">
+          <span>Prepaid Discount</span>
+          <span className="muted">To be calculated</span>
+        </div>
+
+        <div className="summary-row">
+          <span>Shipping Charges</span>
+          <span className="green">FREE</span>
+        </div>
+
+        <div className="summary-row">
+          <span>Total savings</span>
+          <span className="green">₹800.00</span>
+        </div>
+
+        <hr />
+
+        <div className="summary-total">
+          <span>Estimated Total</span>
+          <span>₹{subtotal}</span>
+        </div>
+
+        <button className="checkout-btn">Checkout</button>
+      </div>
       </div>
     </div>
   );
