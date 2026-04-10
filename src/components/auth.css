@@ -14,16 +14,46 @@ body {
 
 /* ================= HEADER ================= */
 .auth-header {
+  position: sticky;        
+  top: 0;
+  z-index: 100;
+  display: flex;           
+  justify-content: space-between;   /* logo left, icons right */
+  align-items: center;
+  min-height: 78px;
+  padding: 0 20px;
+  background: rgba(243, 234, 219, 0.96);
+  border-bottom: 1px solid #d6c3aa;
+  backdrop-filter: blur(8px);
+}
+
+.auth-header-icons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
+  margin-left: auto;      /* pushes icons to the far right */
+}
 
-  padding: 15px 30px;
-  background: linear-gradient(
-    135deg,
-    #f3eadb
-  );
-  border-bottom: 1px solid #d6c3aa; 
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #3b2414;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.icon-btn:hover {
+  border-color: #3b2414;
+  background: #fdfaf5;
+  transform: translateY(-1px);
 }
 
 /* Logo */
@@ -32,25 +62,6 @@ body {
   width: auto;
   object-fit: contain;
   cursor: pointer;
-}
-
-/* Right icon */
-.auth-header-icons {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-/* Icon */
-.icon-btn {
-  color: #654321;
-  font-size: 18px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.icon-btn:hover {
-  opacity: 0.7;
 }
 
 /* ================= BACKGROUND ================= */

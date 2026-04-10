@@ -17,14 +17,21 @@ import slideOne from "../assets/homescreen/img1.jpg";
 import slideTwo from "../assets/homescreen/img2.png";
 import slideThree from "../assets/homescreen/img3.png";
 import slideFour from "../assets/homescreen/img4.png";
-import menImageOne from "../assets/Men's Collection/3e3b1e0731bd0214689d5761effc2e5f.jpg";
-import menImageTwo from "../assets/Men's Collection/58cb38ae13a312ac83b8810624550a38.jpg";
-import menImageThree from "../assets/Men's Collection/bc8f2c1f855a92997f7e3f275afaa733.jpg";
-import womenImageOne from "../assets/Women's Collection/1eeaea48003b982da692a74822aeef07.jpg";
-import womenImageTwo from "../assets/Women's Collection/21ab5b5a0ba35f90c51a4119f61a6fa1.jpg";
-import womenImageThree from "../assets/Women's Collection/4325e96e149af54b55c025a0b309b688.jpg";
-import genzImageOne from "../assets/Gen Z Collection's/35987c374bb954361b11c09199e3f3de.jpg";
-import genzImageTwo from "../assets/Gen Z Collection's/73f4f1551f666363dae473329961b0f9.jpg";
+import menImageOne from "../assets/Men's Collection/img1.jpg";
+import menImageTwo from "../assets/Men's Collection/img2.jpg";
+import menImageThree from "../assets/Men's Collection/img3.jpg";
+import menImageFour from "../assets/Men's Collection/img4.jpg";
+import menImageFive from "../assets/Men's Collection/img5.jpg";
+import womenImageOne from "../assets/Women's Collection/img1.jpg";
+import womenImageTwo from "../assets/Women's Collection/img2.jpg";
+import womenImageThree from "../assets/Women's Collection/img3.jpg";
+import womenImageFour from "../assets/Women's Collection/img4.jpg";
+import womenImageFive from "../assets/Women's Collection/img5.jpg";
+import genzImageOne from "../assets/Gen Z Collection's/img1.jpg";
+import genzImageTwo from "../assets/Gen Z Collection's/img2.jpg";
+import genzImageThree from "../assets/Gen Z Collection's/img3.jpg";
+import genzImageFour from "../assets/Gen Z Collection's/img4.jpg";
+import genzImageFive from "../assets/Gen Z Collection's/img5.jpg";
 
 export default function Home() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -37,34 +44,25 @@ export default function Home() {
     menImageOne,
     menImageTwo,
     menImageThree,
-    menImageOne,
-    menImageTwo,
-    menImageThree,
-    menImageOne,
-    menImageTwo,
-    menImageThree,
+    menImageFour,
+    menImageFive,
+    menImageThree
   ];
   const womenRepeatedImages = [
     womenImageOne,
     womenImageTwo,
     womenImageThree,
-    womenImageOne,
-    womenImageTwo,
-    womenImageThree,
-    womenImageOne,
-    womenImageTwo,
-    womenImageThree,
+    womenImageFour,
+    womenImageFive,
+    womenImageThree
   ];
   const genzRepeatedImages = [
     genzImageOne,
     genzImageTwo,
-    genzImageOne,
-    genzImageTwo,
-    genzImageOne,
-    genzImageTwo,
-    genzImageOne,
-    genzImageTwo,
-    genzImageOne,
+    genzImageThree,
+    genzImageFour,
+    genzImageFive,
+    genzImageTwo
   ];
 
   const suggestions = [
