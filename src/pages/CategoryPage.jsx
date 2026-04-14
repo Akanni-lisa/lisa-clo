@@ -42,7 +42,7 @@ export default function CategoryPage() {
         delete updated[cardId];
         return updated;
       });
-    }, 500);
+    }, 520);
   };
 
   return (

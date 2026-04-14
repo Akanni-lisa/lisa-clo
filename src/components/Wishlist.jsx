@@ -104,18 +104,20 @@ export default function Wishlist() {
                 <div className="wishlist-img">
                   <img src={item.image} alt={item.name} />
                 </div>
+                
+                <div className="wishlist-card-info">
+                  <h3>{item.name}</h3>
+                  <p className="price">₹ {item.price}</p>
 
-                <h3>{item.name}</h3>
-                <p className="price">₹ {item.price}</p>
+                  <select className="size-select">
+                    <option>XS</option>
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                  </select>
 
-                <select className="size-select">
-                  <option>XS</option>
-                  <option>S</option>
-                  <option>M</option>
-                  <option>L</option>
-                </select>
-
-                <button className="add-btn">Add to Cart</button>
+                  <button className="add-btn">Add to Cart</button>
+                </div>
               </div>
             ))}
           </div>
