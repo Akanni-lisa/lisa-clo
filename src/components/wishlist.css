@@ -39,16 +39,16 @@
 
 /* CONTAINER */
 .wishlist-container {
-  padding: 0;                /* remove — let the grid handle padding */
+  padding: 0;                
   overflow-y: auto;
 }
 
 /* GRID */
 .wishlist-grid {
   display: grid;
-  grid-template-columns: repeat(4, 260px);   /* match category page exactly */
+  grid-template-columns: repeat(4, 260px);   
   justify-content: center;
-  gap: 20px;                                 /* match category page exactly */
+  gap: 20px;                                 
   padding: 25px 28px;
 }
 
@@ -60,7 +60,7 @@
   flex-direction: column;
   background: #fff;
   border-radius: 14px;
-  padding: 14px;           /* ← padding on card */
+  padding: 14px;          
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   transition: all 0.25s ease;
   position: relative;
@@ -75,7 +75,7 @@
   width: 100%;
   height: 260px;
   overflow: hidden;
-  border-radius: 10px;     /* ← rounds image corners */
+  border-radius: 10px;     
   background: #ece3d8;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .wishlist-card-info {
-  padding: 10px 0 0;       /* ← no side padding since card handles it */
+  padding: 10px 0 0;       
   display: flex;
   flex-direction: column;
   gap: 8px;
