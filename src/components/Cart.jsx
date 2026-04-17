@@ -157,7 +157,9 @@ export default function CartPage() {
           <span>₹{subtotal}</span>
         </div>
 
-        <button className="checkout-btn">Checkout</button>
+        <Link to="/checkout" className="checkout-btn">
+          Checkout
+        </Link>
       </div>
       </div>
     </div>
