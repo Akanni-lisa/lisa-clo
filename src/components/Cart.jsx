@@ -58,7 +58,7 @@ export default function CartPage() {
         <h2 className="cart-title">Your Cart</h2>
 
         <div className="cart-header-icons">
-          <Link to="/Wishlist" className="icon-btn" aria-label="Go to wishlist">
+          <Link to="/wishlist" className="icon-btn" aria-label="Go to wishlist">
             <FaRegHeart />
           </Link>
           

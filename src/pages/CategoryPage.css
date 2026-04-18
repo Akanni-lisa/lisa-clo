@@ -9,6 +9,16 @@
   background: #f3eadb;
   color: #3b2414;
   font-family: "Inter", sans-serif;
+  overflow-x: clip;
+}
+
+.category-page-title {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+  padding: 12px 14px 4px;
+  margin: 0;
+  letter-spacing: 0.04em;
 }
 
 /* HEADER */
@@ -26,7 +36,9 @@
 }
 
 .logo {
-  height: 90px;
+  height: clamp(52px, 12vw, 90px);
+  width: auto;
+  object-fit: contain;
 }
 
 .category-header-icons {
@@ -46,28 +58,22 @@
 
 /* GRID */
 .product-grid {
-  padding: 25px 28px;
+  padding: 16px clamp(12px, 3vw, 28px) 32px;
   display: grid;
-  grid-template-columns: repeat(4, 260px);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
   justify-content: center;
-  gap: 20px;
-}
-
-.product-name{
-  font-size: 15px;
-  margin: 10px 0 4px;
-  font-weight: 500;
-}
-
-.product-price{
-  font-weight: 500;
-  margin-bottom: 8px;
+  gap: clamp(14px, 2vw, 20px);
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 /* CARD */
 .product-card {
-  width: 260px;
-  height: 420px;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  min-height: 400px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -75,17 +81,38 @@
   border-radius: 14px;
   padding: 14px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  transition: all 0.25s ease;
-  position: relative;
+  transition: 0.25s ease;
 }
 
 .image-wrapper {
-  position: relative;    
   width: 100%;
   height: 260px;
   background: #ece3d8;
-  overflow: hidden;
-  border-radius: 10px;
+  position: relative;
+}
+
+.wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+
+  background: transparent;  /* remove white bg */
+  border: none;             /* remove square border */
+  padding: 0;               /* remove spacing */
+  width: auto;
+  height: auto;
+
+  cursor: pointer;
+}
+
+.wishlist-btn svg {
+  font-size: 20px;
+  color: #555;   /* default color */
+}
+
+.wishlist-btn.active svg {
+  color: red;    /* when clicked ❤️ */
 }
 
 /* ================= FILTER DROPDOWN ================= */
@@ -93,8 +120,29 @@
 .filter-dropdown {
   position: absolute;
   top: 78px;
-  right: 20px;
+  right: 12px;
+  left: auto;
   z-index: 200;
+}
+
+@media (max-width: 520px) {
+  .filter-dropdown {
+    right: 8px;
+    left: 8px;
+  }
+
+  .filter-box {
+    width: 100%;
+    max-width: none;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 78px;
+    padding: 8px 12px;
+    gap: 8px;
+  }
 }
 
 /* CLEAN WHITE BOX */
@@ -222,81 +270,22 @@
   margin-top: 6px;
   color: #666;
 }
+.qty-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 
-/* WISHLIST ANIMATION */
-.wishlist-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 8;
-  width: 36px;
-  height: 36px;
+.qty-control button {
+  padding: 5px 10px;
   border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  color: #2f2f2f;
-  display: grid;
-  place-items: center;
-  font-size: 18px;
+  background: #8b5e3c;
+  color: white;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  border-radius: 4px;
 }
 
-.wishlist-btn:hover {
-  transform: scale(1.06);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.wishlist-btn.active {
-  color: #e7344c;
-}
-
-.wishlist-btn.active svg {
-  filter: drop-shadow(0 2px 4px rgba(231, 52, 76, 0.3));
-}
-
-.wishlist-btn.burst {
-  animation: wishlistPop 0.42s ease-out;
-}
-
-.wishlist-btn.burst::before,
-.wishlist-btn.burst::after {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.wishlist-btn.burst::before {
-  background: radial-gradient(circle, rgba(231, 52, 76, 0.18) 0%, rgba(231, 52, 76, 0) 65%);
-  animation: wishlistRing 0.52s ease-out;
-}
-
-.wishlist-btn.burst::after {
-  background:
-    radial-gradient(circle at 20% 30%, #ff663d 2px, transparent 3px),
-    radial-gradient(circle at 80% 26%, #ffa500 2px, transparent 3px),
-    radial-gradient(circle at 28% 78%, #ff3b6a 2px, transparent 3px),
-    radial-gradient(circle at 72% 74%, #ff8e3c 2px, transparent 3px),
-    radial-gradient(circle at 52% 12%, #e7344c 2px, transparent 3px),
-    radial-gradient(circle at 12% 58%, #ff5f45 2px, transparent 3px),
-    radial-gradient(circle at 88% 58%, #ff6f59 2px, transparent 3px);
-  animation: wishlistBurst 0.52s ease-out;
-}
-
-@keyframes wishlistPop {
-  0% { transform: scale(0.7); }
-  55% { transform: scale(1.16); }
-  100% { transform: scale(1); }
-}
-
-@keyframes wishlistRing {
-  0% { transform: scale(0.55); opacity: 0.7; }
-  100% { transform: scale(1.4); opacity: 0; }
-}
-
-@keyframes wishlistBurst {
-  0% { transform: scale(0.68); opacity: 0.85; }
-  100% { transform: scale(1.45); opacity: 0; }
+.qty-control span {
+  font-weight: bold;
 }

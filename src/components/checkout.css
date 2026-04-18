@@ -8,6 +8,26 @@ body {
   color: #654321;
 }
 
+.checkout-page .header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  min-height: 78px;
+  padding: 0 14px;
+  border-bottom: 1px solid #d4c0a8;
+  background: rgba(243, 234, 219, 0.96);
+}
+
+.checkout-page .logo {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
+}
+
 .checkout-title {
   justify-self: center;
   margin: 0;
@@ -212,6 +232,19 @@ body {
 }
 
 @media (max-width: 640px) {
+  .checkout-page .header {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    justify-items: center;
+    text-align: center;
+    min-height: auto;
+    padding: 10px 12px;
+  }
+
+  .checkout-header-icons {
+    justify-self: center;
+  }
+
   .checkout-layout {
     width: min(100%, calc(100% - 20px));
     gap: 20px;
